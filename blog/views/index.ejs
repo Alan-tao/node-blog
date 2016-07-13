@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>娱乐空间</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/animate.min.css">
+</head>
+<body>
+<div class="banner">
+    <section class="box">
+        <ul class="texts">
+            <p>我们不停的翻弄着回忆</p>
+            <p>却再也找不回那时的自己</p>
+            <p>红尘一梦，不再追寻</p>
+        </ul>
+        <form method="post" id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="file" name="avtar" style="display: none">
+        </form>
+        <div class="avatar">
+            <% if (login){ %>
+            <a href="javascript:;" id="hrefFile" style="background: url('/<%= avtar %>')no-repeat">
+                <span>更换头像</span>
+            </a>
+            <% }else { %>
+            <a href="/showLogin" style="background: url('/<%= avtar %>')no-repeat">
+                <span>请先登录</span>
+            </a>
+            <% } %>
+        </div>
+    </section>
+</div>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">娱乐空间</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">全部动态</a></li>
+                <li><a href="/">个人中心</a></li>
+                <li><a href="/">我的说说</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <% if (!login){ %>
+                <li><a href="/showLogin">登陆</a></li>
+                <li><a href="/showRegister">注册</a></li>
+                <% }else { %>
+                <li><a href="javascript:;">欢迎您：<%= username %></a></li>
+                <li><a href="javascript:;">设置个人资料</a></li>
+                <% } %>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="wrap">
+    <aside class="menu">
+        <ul>
+            <li><a href="javascript:;"><i class="icon"></i>音乐</a></li>
+            <li><a href="javascript:;"><i class="icon youx"></i>游戏</a></li>
+            <li><a href="javascript:;"><i class="icon gaox"></i>搞笑</a></li>
+            <li><a href="javascript:;"><i class="icon yued"></i>阅读</a></li>
+            <li><a href="javascript:;"><i class="icon ship"></i>视频</a></li>
+            <li><a href="javascript:;"><i class="icon xiaos"></i>小说</a></li>
+            <li><a href="javascript:;"><i class="icon qiand"></i>签到</a></li>
+        </ul>
+    </aside>
+    <article class="shuohsuo-box">
+        <div class="shuohsuo-form">
+            <div id="textarea" contenteditable="true"></div>
+            <span class="prompt">说点什么吧</span>
+        </div>
+        <div class="btn-content">
+            <a href="javascript:;" class="biaoq"><img src="/images/QQbq/e100.gif" alt="表情"></a>
+            <a href="javascript:;" class="sub" id="sub">发表</a>
+        </div>
+        <div class="wb">
+            <ul id="ul">
+                <li><a href="javascript:;"><img src="images/QQbq/e100.gif" width="24px" height="24px" alt="微笑/wx"
+                                                title="微笑/wx"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e101.gif" width="24px" height="24px" alt="撇嘴/pz"
+                                                title="撇嘴/pz"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e102.gif" width="24px" height="24px" alt="色/se"
+                                                title="色/se"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e103.gif" width="24px" height="24px" alt="发呆/fd"
+                                                title="发呆/fd"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e104.gif" width="24px" height="24px" alt="得意/dy"
+                                                title="得意/dy"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e105.gif" width="24px" height="24px" alt="流泪/ll"
+                                                title="流泪/ll"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e106.gif" width="24px" height="24px" alt="害羞/hx"
+                                                title="害羞/hx"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e107.gif" width="24px" height="24px" alt="闭嘴/bz"
+                                                title="闭嘴/bz"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e108.gif" width="24px" height="24px" alt="睡/shui"
+                                                title="睡/shui"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e109.gif" width="24px" height="24px" alt="大哭/dh"
+                                                title="大哭/dh"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e110.gif" width="24px" height="24px" alt="尴尬/gg"
+                                                title="尴尬/gg"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e111.gif" width="24px" height="24px" alt="发怒/fn"
+                                                title="发怒/fn"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e112.gif" width="24px" height="24px" alt="调皮/tp"
+                                                title="调皮/tp"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e113.gif" width="24px" height="24px" alt="呲牙/cy"
+                                                title="呲牙/cy"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e114.gif" width="24px" height="24px" alt="惊讶/jy"
+                                                title="惊讶/jy"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e115.gif" width="24px" height="24px" alt="难过/ng"
+                                                title="难过/ng"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e116.gif" width="24px" height="24px" alt="酷/kuk"
+                                                title="酷/kuk"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e117.gif" width="24px" height="24px" alt="冷汗/nh"
+                                                title="冷汗/nh"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e118.gif" width="24px" height="24px" alt="抓狂/zk"
+                                                title="抓狂/zk"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e119.gif" width="24px" height="24px" alt="吐/tuu"
+                                                title="吐/tuu"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e120.gif" width="24px" height="24px" alt="偷笑/tx"
+                                                title="偷笑/tx"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e121.gif" width="24px" height="24px" alt="可爱/ka"
+                                                title="可爱/ka"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e122.gif" width="24px" height="24px" alt="白眼/by"
+                                                title="白眼/by"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e123.gif" width="24px" height="24px" alt="傲慢/am"
+                                                title="傲慢/am"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e124.gif" width="24px" height="24px" alt="饥饿/je"
+                                                title="饥饿/je"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e125.gif" width="24px" height="24px" alt="困/kuk"
+                                                title="困/kuk"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e126.gif" width="24px" height="24px" alt="惊恐/jk"
+                                                title="惊恐/jk"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e127.gif" width="24px" height="24px" alt="流汗/lh"
+                                                title="流汗/lh"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e128.gif" width="24px" height="24px" alt="憨笑/hx"
+                                                title="憨笑/hx"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e129.gif" width="24px" height="24px" alt="大兵/db"
+                                                title="大兵/db"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e130.gif" width="24px" height="24px" alt="奋斗/fendou"
+                                                title="奋斗/fendou"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e131.gif" width="24px" height="24px" alt="咒骂/zhm"
+                                                title="咒骂/zhm"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e132.gif" width="24px" height="24px" alt="疑问/yw"
+                                                title="疑问/yw"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e133.gif" width="24px" height="24px" alt="嘘.../xu"
+                                                title="嘘.../xu"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e134.gif" width="24px" height="24px" alt="晕/yun"
+                                                title="晕/yun"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e135.gif" width="24px" height="24px" alt="折磨/zhem"
+                                                title="折磨/zhem"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e136.gif" width="24px" height="24px" alt="衰/shuai"
+                                                title="衰/shuai"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e137.gif" width="24px" height="24px" alt="骷颅/kl"
+                                                title="骷颅/kl"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e138.gif" width="24px" height="24px" alt="敲打/qd"
+                                                title="敲打/qd"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e139.gif" width="24px" height="24px" alt="再见/zj"
+                                                title="再见/zj"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e140.gif" width="24px" height="24px" alt="擦汗/ch"
+                                                title="擦汗/ch"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e141.gif" width="24px" height="24px" alt="抠鼻/kb"
+                                                title="抠鼻/kb"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e142.gif" width="24px" height="24px" alt="鼓掌/gz"
+                                                title="鼓掌/gz"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e143.gif" width="24px" height="24px" alt="糗大了/qd"
+                                                title="糗大了/qd"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e144.gif" width="24px" height="24px" alt="坏笑/huaix"
+                                                title="坏笑/huaix"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e145.gif" width="24px" height="24px" alt="坐哼哼zhh"
+                                                title="坐哼哼zhh"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e146.gif" width="24px" height="24px" alt="右哼哼/yhh"
+                                                title="右哼哼/yhh"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e147.gif" width="24px" height="24px" alt="哈欠/hq"
+                                                title="哈欠/hq"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e148.gif" width="24px" height="24px" alt="鄙视/bs"
+                                                title="鄙视/bs"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e149.gif" width="24px" height="24px" alt="委屈/wq"
+                                                title="委屈/wq"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e150.gif" width="24px" height="24px" alt="快哭了/kkl"
+                                                title="快哭了/kkl"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e151.gif" width="24px" height="24px" alt="阴险/yx"
+                                                title="阴险/yx"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e152.gif" width="24px" height="24px" alt="亲亲/qq"
+                                                title="亲亲/qq"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e153.gif" width="24px" height="24px" alt="吓/xia"
+                                                title="吓/xia"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e154.gif" width="24px" height="24px" alt="可怜kl"
+                                                title="可怜kl"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e155.gif" width="24px" height="24px" alt="菜刀/cd"
+                                                title="菜刀/cd"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e156.gif" width="24px" height="24px" alt="西瓜/cg"
+                                                title="西瓜/cg"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e157.gif" width="24px" height="24px" alt="啤酒/bj"
+                                                title="啤酒/bj"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e158.gif" width="24px" height="24px" alt="篮球/lq"
+                                                title="篮球/lq"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e159.gif" width="24px" height="24px" alt="乒乓/pp"
+                                                title="乒乓/pp"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e160.gif" width="24px" height="24px" alt="咖啡/kf"
+                                                title="咖啡/kf"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e161.gif" width="24px" height="24px" alt="饭/fan"
+                                                title="饭/fan"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e162.gif" width="24px" height="24px" alt="猪头/zt"
+                                                title="猪头/zt"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e163.gif" width="24px" height="24px" alt="玫瑰/mg"
+                                                title="玫瑰/mg"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e164.gif" width="24px" height="24px" alt="凋谢/dx"
+                                                title="凋谢/dx"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e165.gif" width="24px" height="24px" alt="示爱/sa"
+                                                title="示爱/sa"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e166.gif" width="24px" height="24px" alt="爱心/ax"
+                                                title="爱心/ax"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e167.gif" width="24px" height="24px" alt="心碎/xs"
+                                                title="心碎/xs"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e168.gif" width="24px" height="24px" alt="蛋糕/dg"
+                                                title="蛋糕/dg"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e169.gif" width="24px" height="24px" alt="闪电/sd"
+                                                title="闪电/sd"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e170.gif" width="24px" height="24px" alt="炸弹/zd"
+                                                title="炸弹/zd"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e171.gif" width="24px" height="24px" alt="刀/dao"
+                                                title="刀/dao"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e172.gif" width="24px" height="24px" alt="足球/zq"
+                                                title="足球/zq"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e173.gif" width="24px" height="24px" alt="瓢虫/pc"
+                                                title="瓢虫/pc"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e174.gif" width="24px" height="24px" alt="便便/bb"
+                                                title="便便/bb"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e175.gif" width="24px" height="24px" alt="月亮/yl"
+                                                title="月亮/yl"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e176.gif" width="24px" height="24px" alt="太阳/ty"
+                                                title="太阳/ty"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e177.gif" width="24px" height="24px" alt="礼物/lw"
+                                                title="礼物/lw"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e178.gif" width="24px" height="24px" alt="抱抱/bb"
+                                                title="抱抱/bb"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e179.gif" width="24px" height="24px" alt="强/qiang"
+                                                title="强/qiang"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e180.gif" width="24px" height="24px" alt="弱/ruo"
+                                                title="弱/ruo"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e181.gif" width="24px" height="24px" alt="握手/ws"
+                                                title="握手/ws"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e182.gif" width="24px" height="24px" alt="胜利/sl"
+                                                title="胜利/sl"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e183.gif" width="24px" height="24px" alt="抱拳/bq"
+                                                title="抱拳/bq"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e184.gif" width="24px" height="24px" alt="勾引/gy"
+                                                title="勾引/gy"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e185.gif" width="24px" height="24px" alt="拳头/qt"
+                                                title="拳头/qt"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e186.gif" width="24px" height="24px" alt="差劲/cj"
+                                                title="差劲/cj"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e187.gif" width="24px" height="24px" alt="爱你/aini"
+                                                title="爱你/aini"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e188.gif" width="24px" height="24px" alt="NO/bu"
+                                                title="NO/bu"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e189.gif" width="24px" height="24px" alt="OK/hd"
+                                                title="OK/hd"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e190.gif" width="24px" height="24px" alt="爱情/aiq"
+                                                title="爱情/aiq"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e191.gif" width="24px" height="24px" alt="飞吻/fw"
+                                                title="飞吻/fw"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e192.gif" width="24px" height="24px" alt="跳跳/tt"
+                                                title="跳跳/tt"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e193.gif" width="24px" height="24px" alt="发抖/fd"
+                                                title="发抖/fd"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e194.gif" width="24px" height="24px" alt="怄火/oh"
+                                                title="怄火/oh"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e195.gif" width="24px" height="24px" alt="转圈/zq"
+                                                title="转圈/zq"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e196.gif" width="24px" height="24px" alt="磕头/kt"
+                                                title="磕头/kt"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e197.gif" width="24px" height="24px" alt="回头/ht"
+                                                title="回头/ht"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e198.gif" width="24px" height="24px" alt="跳绳/ts"
+                                                title="跳绳/ts"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e199.gif" width="24px" height="24px" alt="挥手/hs"
+                                                title="挥手/hs"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e200.gif" width="24px" height="24px" alt="激动/jd"
+                                                title="激动/jd"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e201.gif" width="24px" height="24px" alt="街舞/jw"
+                                                title="街舞/jw"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e202.gif" width="24px" height="24px" alt="献吻/xw"
+                                                title="献吻/xw"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e203.gif" width="24px" height="24px" alt="左太极/ztj"
+                                                title="左太极/ztj"/></a></li>
+                <li><a href="javascript:;"><img src="images/QQbq/e204.gif" width="24px" height="24px" alt="右太极/ytj"
+                                                title="右太极/ytj"/></a></li>
+            </ul>
+        </div>
+        <div class="shuoshuo-list">
+            <div class="shuoshuo-list-head"><i class="icon"></i>好友动态</div>
+            <!--说说列表-->
+            <ul id="shuoshuo-list"></ul>
+        </div>
+        <div class="loading-box">
+            <div class="loading-content">
+                <img src="/images/loading.gif" alt="loading" width="32" height="32">
+                <span>加载中。。。</span>
+            </div>
+            <div class="loading-end">
+                <img src="/images/loading-end.png" alt="加载完了" width="25" height="25">
+                <span>亲，已经加载完了。</span>
+            </div>
+        </div>
+    </article>
+    <!--右边栏-->
+    <aside class="advertising-box">
+        <div class="advertising">
+            <a href="javascript:;"><img src="/images/guanggao1.png" alt=""></a>
+        </div>
+        <div class="advertising">
+            <a href="javascript:;"><img src="/images/guanggao2.png" alt=""></a>
+        </div>
+    </aside>
+</div>
+
+<!--jquery-->
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/underscore-noflect.js"></script>
+<!--模板-->
+<script type="text/template" id="models">
+    <li>
+        <div class="user-head">
+            <a href="javascript:;" class="avatars">
+                <img src="/{{=avtar}}" alt="头像" width="46" height="46">
+            </a>
+            <div class="title-content">
+                <a href="javascript:;" class="username">{{=username}}</a>
+                <span>{{=datetime}}</span>
+            </div>
+            <p style="clear: both"></p>
+        </div>
+        <p class="cententer">{{=content}}</p>
+        <div class="comments-from">
+            <a href="javascript:;" class="dianzan-btn">
+                <img src="/images/zan.png" alt="" width="25" height="25">
+            </a>
+            <input type="text" name="" placeholder="我也说一句" class="pinl">
+            <div class="comments-from-btn-content">
+                <a href="javascript:;" class="bq"><img src="/images/QQbq/e100.gif" alt="表情"></a>
+                <a href="javascript:;" class="subm">发表</a>
+            </div>
+        </div>
+    </li>
+</script>
+<script>
+    $(function () {
+        var total; //一共能分多少页
+        var pages = 0;//当前第几页
+        var pageSize = 5;//每页显示的数量
+
+        //无线加载数据，瀑布流
+        $(window).scroll(function () {
+            //判断当页面滚动条滚到底部的时候去请求数据
+            if ($(this).scrollTop() >= $(document).height() - $(window).height()) {
+                //判断当前页是否小于总页数，如说小于，则可以下拉请求数据，
+                //total-1默认加载一次了，所以减1
+                if (pages < total - 1) {
+                    pages++;
+                    dossData(pageSize, pages);
+                } else {
+
+                    $('.loading-box .loading-end').css("display", "block")
+                }
+            }
+        });
+        //页面一加载，就去请求数据(第一种方式，把异步强行变成同步，但是谷歌浏览器给我们警告说同步会影响用户体验)
+        //因为mongodb没有外键，所以我们需要嵌套一个ajax请求去user表去查询用户信息
+//        $.ajax({
+//            url: "/doSSData",
+//            type: "get",
+//            success: function (data) {
+//                var compiled = _.template($("#models").html());
+//                for (var i = 0; i < data.length; i++) {
+//                    $.ajax({
+//                        url: "/doUser",
+//                        data: "username=" + data[i].username,
+//                        type: "get",
+//                        async: false,
+//                        success: function (msg) {
+//                            data[i].avtar = msg.avtar
+//                            var html = compiled({
+//                                username: data[i].username,
+//                                datetime: data[i].datetime,
+//                                content: data[i].content,
+//                                avtar: data[i].avtar
+//                            });
+//                            $('#shuoshuo-list').append($(html));
+//                        }
+//                    })
+//                }
+//            }
+//        });
+
+
+        //第二种方法就是用迭代器，强求把异步变同步
+        dossData(pageSize, pages);
+        function dossData(pageSize, page) {
+            //显示loading加载中
+            $('.loading-box .loading-content').css("display", "block");
+            //模板
+            var compiled = _.template($("#models").html());
+            $.ajax({
+                url: "/doSSData",
+                type: "get",
+                data: "pages=" + pages + "&pageSize=" + pageSize,
+                success: function (result) {
+                    //默认从0开始迭代
+                    iterator(0);
+                    function iterator(i) {
+                        if (i == result.length) {
+                            //这里写请求完之后的事情
+                            //数据请求成功，关闭loading
+                            $('.loading-box .loading-content').css("display", "none");
+                            return;
+                        }
+                        //再去请求user集合，查用户信息
+                        $.ajax({
+                            url: "/doUser",
+                            type: "get",
+                            async: false,
+                            data: "username=" + result[i].username,
+                            success: function (msg) {
+                                //修改字典，给字典增加一项
+                                result[i].avtar = msg.avtar;
+                                //组装模板
+                                var html = compiled(result[i]);
+                                $('#shuoshuo-list').append($(html));
+                            }
+                        })
+                        iterator(i + 1);
+                    }
+                }
+            })
+        };
+
+        //get去请求总共有多少条数据
+        $.get('/doCount', function (result) {
+            total = parseInt(Math.ceil(result / pageSize));
+        });
+
+        //点击头像的时候出发file选择图片
+        $('#hrefFile').click(function () {
+            $('#file').click();
+        })
+        //当用户选择图片的时候触发change事件来提交表单
+        $('#file').change(function () {
+            //this.form.submit();
+            var formData = new FormData($("#uploadForm")[0]);
+            $.ajax({
+                url: '/doupload',
+                type: 'POST',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (returndata) {
+                    if (returndata == 1) {
+                        window.location = "/showCrop";
+                    } else {
+                        alert(returndata);
+                    }
+                }
+            });
+        });
+
+        //获取焦点的时候显示下面发表
+        $('#textarea').focus(function () {
+
+            $('.prompt').css("display", "none");
+
+        }).focusout(function () {
+
+            if ($('#textarea').html() == "" || $('#textarea').html() == null) {
+                $('.prompt').css("display", "block");
+            }
+
+        });
+
+
+        //回复框获取焦点的时候显示回复发表框
+        $('#shuoshuo-list').on('focus', '.pinl', function () {
+
+            $(".comments-from-btn-content").stop().slideUp();
+            $(this).next(".comments-from-btn-content").stop().slideDown();
+
+        })
+
+        //点击document隐藏回复发表框
+        $(document).click(function () {
+            $('.comments-from-btn-content').slideUp();
+        })
+
+        //点击当前li隐藏其他li里面的回复发表框
+        $('#shuoshuo-list').on('click', 'li', function (e) {
+            //阻止事件冒泡
+            e.stopPropagation();
+
+            $(this).siblings().find(".comments-from-btn-content").slideUp();
+        })
+
+        //点击发表自己的说说 用ajax提交
+        $('#sub').click(function () {
+
+            $.post('/doshuoshuo', {
+                //请求参数
+                "content": $('#textarea').html()
+            }, function (result) {
+
+                if (result == -2) {
+                    alert("您还没登录。不能发表！");
+                } else if (result == -1) {
+                    alert("发表说说失败，请联系管理员！");
+                } else {
+                    $('#textarea').html("");
+                    //为了提高用户体验，先给页面添加，
+                    var compiled = _.template($("#models").html());
+                    var html = compiled({
+                        username: result.contents.username,
+                        content: result.contents.content,
+                        datetime: result.contents.datetime,
+                        avtar: result.contents.avtar
+                    });
+                    $('#shuoshuo-list').prepend($(html));
+                }
+            })
+        });
+
+        //点击发说说点击表情的时候显示表情
+        $('.biaoq').click(function () {
+            $('.wb').toggle(300);
+        })
+        //当鼠标点击文本框内隐藏表情栏
+        $('#textarea').click(function () {
+            $('.wb').hide(200);
+        })
+        //获取表情到文本框内
+        $('#ul').find('li').click(function () {
+            //隐藏提示信息
+            $('.prompt').css("display", "none");
+            var img = $(this).find('img').clone();
+            console.log(img);
+            $('#textarea').append(img);
+        })
+    });
+</script>
+</body>
+</html>

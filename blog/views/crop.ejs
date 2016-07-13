@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>图片裁切</title>
+    <link rel="stylesheet" href="/css/jquery.Jcrop.min.css" type="text/css"/>
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/js/jquery.Jcrop.js"></script>
+    <style type="text/css">
+        .jcrop-holder #preview-pane {
+            display: block;
+            position: absolute;
+            z-index: 2000;
+            top: 10px;
+            right: -280px;
+            padding: 6px;
+            border: 1px rgba(0, 0, 0, .4) solid;
+            background-color: white;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+            -webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+            box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        #preview-pane .preview-container {
+            width: 250px;
+            height: 170px;
+            overflow: hidden;
+        }
+
+        .wrap {
+            width: 1024px;
+            margin: 0 auto;
+        }
+
+        #sub {
+            display: block;
+            width: 120px;
+            line-height: 40px;
+            text-align: center;
+            background: #6ecc97;
+            border: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+    <!-- js -->
+    <script type="text/javascript">
+        $(function () {
+
+            var jcrop_api,
+                    boundx,
+                    boundy,
+                    $preview = $('#preview-pane'),
+                    $pcnt = $('#preview-pane .preview-container'),
+                    $pimg = $('#preview-pane .preview-container img'),
+                    xsize = $pcnt.width(),
+                    ysize = $pcnt.height();
+            console.log('init', [xsize, ysize]);
+
+            //锟斤拷始锟斤拷
+            $('#target').Jcrop({
+                boxWidth:600,//画布宽度
+                boxHeight:500,//画布高
+                onChange: updatePreview,
+                onSelect: updatePreview,
+                aspectRatio: xsize / ysize
+            }, function () {
+                var bounds = this.getBounds();
+                boundx = bounds[0];
+                boundy = bounds[1];
+                jcrop_api = this;
+                jcrop_api.animateTo([100, 100, 600, 500]);
+                $preview.appendTo(jcrop_api.ui.holder);
+            });
+            var w; //锟斤拷
+            var h; //锟斤拷
+            var x; //锟斤拷锟斤拷锟竭的撅拷锟斤拷
+            var y; //锟洁顶锟斤拷锟侥撅拷锟斤拷
+            function updatePreview(c) {
+                if (parseInt(c.w) > 0) {
+                    var rx = xsize / c.w;
+                    var ry = ysize / c.h;
+                    w = parseInt(c.w);
+                    h = parseInt(c.h);
+                    x = parseInt(c.x);
+                    y = parseInt(c.y);
+                    $pimg.css({
+                        width: Math.round(rx * boundx) + 'px',
+                        height: Math.round(ry * boundy) + 'px',
+                        marginLeft: '-' + Math.round(rx * c.x) + 'px',
+                        marginTop: '-' + Math.round(ry * c.y) + 'px'
+                    });
+                }
+            };
+
+            $('#sub').click(function () {
+                $.get('/doCrop',{
+                    "w":w,
+                    "h":h,
+                    "x":x,
+                    "y":y
+                },function(result){
+                    if (result == -1 || result == -2){
+                        alert("裁切图片失败！")
+                    }else {
+                       window.location = "/";
+                    }
+                });
+            })
+        });
+    </script>
+</head>
+
+<body>
+<div class="wrap">
+    <img src="/<%=avtar%>" id="target" alt=""/>
+    <div id="preview-pane">
+        <div class="preview-container">
+            <img src="/<%=avtar%>" class="jcrop-preview" alt="Preview"/>
+        </div>
+    </div>
+     <a href="javascript:;" id="sub">确 定</a>
+</div>
+</body>
+
+</html>
